@@ -1,0 +1,15 @@
+
+#Options +FollowSymLinks
+RewriteEngine On
+#RewriteCond %{HTTPS} !=on
+RewriteRule ^(.*)$ public/$1 [L]
+RewriteBase /mdsot/
+
+## never rewrite for existing files, directories and links
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-l
+RewriteCond %{REQUEST_FILENAME} !\.(gif|jp?g|png|js|css|swf|php|ico)$
+
+
+RewriteRule .* index.php [L,QSA]
